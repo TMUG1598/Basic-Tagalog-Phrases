@@ -46,4 +46,24 @@ triggerBeat = (event) => {
     }
 }
 
+triggerBeat = (event) => {
+    const keyCode = event.keyCode;
+    if(keyCode in beats) {
+        let keyPressed = beats[keyCode];
+        keyPressed.beat.playAudio();
+        keyPressed.button.select();
+    }
+}
+
+clickedBeat = (event) => {
+    console.log(event.target.id);
+    const keyCode = event.target.id;
+    if(keyCode in beats) {
+        let keyPressed = beats[keyCode];
+        keyPressed.beat.playAudio();
+        keyPressed.button.select();
+    }
+}
+
 document.addEventListener('keydown', triggerBeat);
+document.addEventListener('click', clickedBeat);
